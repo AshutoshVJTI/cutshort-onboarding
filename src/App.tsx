@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Page1 from "./components/onboarding/Page1";
+import Page2 from "./components/onboarding/Page2";
+import Page3 from "./components/onboarding/Page3";
+import Page4 from "./components/onboarding/Page4";
+import Pagination from "./components/Pagination";
+import logo from "./images/cutshort-logo.jpg";
 
 function App() {
+  const [page, setPage] = useState(1);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <img src={logo} alt="cutshort-logo" className="logo" />
+      <Pagination page={page} />
+      <div>
+        {page === 1 && <Page1 setPage={setPage} />}
+        {page === 2 && <Page2 setPage={setPage} />}
+        {page === 3 && <Page3 setPage={setPage} />}
+        {page === 4 && <Page4 />}
+      </div>
     </div>
   );
 }
